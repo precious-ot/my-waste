@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import image6 from './Assets/image6.jpg';
 import image20 from './Assets/image20.jpg';
 import myImage4 from './Assets/myImage4.jpg';
+import { createPortal } from "react-dom";
+
 function Yards({number, url, price, altText}){
     const initialCount = 1
     const [skip, setSkip] = useState(false);
     const [count, setCount] = useState(initialCount);
+    const sideBar = document.getElementById('sideBar');
 
     const skipClick = () => {
         setSkip(true);
@@ -28,8 +31,9 @@ function Yards({number, url, price, altText}){
                 <div className="font-semibold text-xl">&euro;{price}</div>
             </div>
             </div>
-            {skip && (
-                <div className="fixed sm:py-8 px-6 px-10 w-[100%] top-0 bg-black h-full sm:w-70 right-0">
+            {skip && createPortal(
+                <div className="relative w-[100%] h-full sm:w-80">
+                <div className="fixed sm:p-5 px-10 w-[100%] top-0 bg-black h-full sm:w-70 right-0">
                    <button className="text-white font-medium flex place-items-center" onClick={skipRemove}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
@@ -41,7 +45,7 @@ function Yards({number, url, price, altText}){
                 <div className="mt-8">
                     <p className="font-semibold text-xl text-white">{number} Yards Skip</p>
                    <p className="mt-1 text-sm text-neutral-400">14 days hire period</p>
-                   <div className="mt-6 font-semibold text-xl text-white">{price}&euro;</div>
+                   <div className="mt-6 font-semibold text-xl text-white">&euro;{price}</div>
                 </div>
                 <div className="flex mt-3 gap-3 border w-30 place-content-center text-white">
                 <button onClick={() => setCount(prevCount => prevCount - 1)}>-</button>
@@ -52,6 +56,8 @@ function Yards({number, url, price, altText}){
                     <button className="text-white bg-blue-800 py-4 rounded-xl">CONTINUE</button>
                 </div>
                 </div>
+                </div>,
+                sideBar
             )}
         </div>
     );
