@@ -7,7 +7,7 @@ import Sort from './sort';
 function App(part) {
   return (
     <div className='flex '>
-    <div className='bg-black px-15 grow-1'>
+    <div className='bg-black px-6 sm:px-10 grow-1'>
       <Nav />
       <Heading />
       <Sort/>

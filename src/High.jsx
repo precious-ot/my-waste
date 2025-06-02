@@ -33,7 +33,7 @@ function Yards({number, url, price, altText}){
             </div>
             {skip && createPortal(
                 <div className="relative w-[100%] h-full sm:w-80">
-                <div className="fixed sm:p-5 px-10 w-[100%] top-0 bg-black h-full sm:w-70 right-0">
+                <div className="fixed sm:p-5 px-10 w-[100%] top-0 bg-black sm:bg-neutral-800 h-full sm:w-80 right-0">
                    <button className="text-white font-medium flex place-items-center" onClick={skipRemove}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
@@ -64,7 +64,7 @@ function Yards({number, url, price, altText}){
 }
 export default function High(){
     return(
-        <div className="relative grid gap-5 lg:grid-cols-3 md:grid-cols-2 py-10 sm:py-10 sm:px-10">
+        <div className="grid gap-5 lg:grid-cols-3 md:grid-cols-2 py-10 sm:py-10 sm:px-10">
             <Yards url={image20} number={20} price={992}/>
             <Yards url={image20} number={40} price={992}/>
             <Yards url={image6} number={16} price={496}/>
