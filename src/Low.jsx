@@ -5,12 +5,9 @@ import myImage4 from './Assets/myImage4.jpg';
 import { createPortal } from 'react-dom';
 
 
-function Yards({number, url, price, altText, part}){
-    const initialCount = 1
-    const [skip, setSkip] = useState(false);
-    const [count, setCount] = useState(initialCount);
-    const sideBar = document.getElementById('sideBar');
 
+export default function Low(){
+    const [skip, setSkip] = useState(false);
     const skipClick = () => {
         setSkip(true);
     }
@@ -18,6 +15,14 @@ function Yards({number, url, price, altText, part}){
     const skipRemove = () => {
         setSkip(false);
     }
+
+    function Yards({number, url, price, altText, part}){
+    const initialCount = 1
+    
+    const [count, setCount] = useState(initialCount);
+    const sideBar = document.getElementById('sideBar');
+
+    
     return(
       <div className="static">
         <div onClick={skipClick} className="p-1 rounded-xl text-white max-w-lg hover:bg-blue-800 duration-210 ease-in-out delay-160 hover:-translate-y-1 hover:scale-102">
@@ -64,9 +69,8 @@ function Yards({number, url, price, altText, part}){
     );
     
 }
-export default function Low(){
     return(
-        <div className="grid gap-5 lg:grid-cols-3 md:grid-cols-2 sm:py-10 shrink-0 py-10">
+        <div className={Life(skip)}>
             <Yards url={myImage4} number={4} price={278}/>
             <Yards url={image20} number={6} price={305}/>
             <Yards url={image6} number={8} price={375}/>
@@ -78,4 +82,8 @@ export default function Low(){
             <Yards url={image20} number={40} price={992}/>
         </div>
     )
+}
+
+export function Life(skip){
+   return skip ? 'grid gap-5 lg:grid-cols-2 md:grid-cols-1 py-10 sm:py-10' : 'grid gap-5 lg:grid-cols-3 md:grid-cols-2 py-10 sm:py-10'
 }
